@@ -51,8 +51,8 @@ module "ecs" {
       }
       assign_public_ip                   = true
       deployment_minimum_healthy_percent = 100
-      subnet_ids                   = [] #List of subnet IDs to use for your tasks
-      security_group_ids           = [] #Create a SG resource and pass it here
+      subnet_ids                   = ["subnet-07e0e205fee5e098c","subnet-0f1e7281dca071052"] #List of subnet IDs to use for your tasks
+      security_group_ids           = ["sg-076a15136e8e18423"] #Create a SG resource and pass it here
     }
   }
 }
