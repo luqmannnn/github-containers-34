@@ -31,7 +31,7 @@ module "ecs" {
   source  = "terraform-aws-modules/ecs/aws"
   version = "~> 6.7.0"
 
-  cluster_name = "${local.prefix}-ecs"
+  cluster_name = "luqman-ce11-ecs"
 
   services = {
     luqman-ce11-task-def = { #task definition and service name -> #Change

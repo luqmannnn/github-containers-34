@@ -1,4 +1,4 @@
-name: Docker build and test
+name: Docker CI
 
 on:
   pull_request:
