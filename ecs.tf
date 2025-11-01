@@ -29,7 +29,7 @@ locals {
 
 module "ecs" {
   source  = "terraform-aws-modules/ecs/aws"
-  version = "~> 5.9.0"
+  version = "~> 6.7.0"
 
   cluster_name = "${local.prefix}-ecs"
   fargate_capacity_providers = {
