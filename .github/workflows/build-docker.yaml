@@ -1,0 +1,38 @@
+name: Docker build and test
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  docker-build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v5
+      
+      - name: Set up Docker
+        uses: docker/setup-docker-action@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build check
+        run: |
+          docker build . --tag luqman-ce11-ecr:v${{ github.run_number }}.0,luqman-ce11-ecr:latest .
+
+      - name: Install Snyk CLI
+        run: npm install -g snyk
+
+      - name: Snyk container test
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: |
+          snyk container test luqman-ce11-ecr:latest --severity-threshold=high
+
+      - name: Snyk code test
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: |
+          snyk code test .
