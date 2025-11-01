@@ -32,13 +32,6 @@ module "ecs" {
   version = "~> 6.7.0"
 
   cluster_name = "${local.prefix}-ecs"
-  fargate_capacity_providers = {
-    FARGATE = {
-      default_capacity_provider_strategy = {
-        weight = 100
-      }
-    }
-  }
 
   services = {
     luqman-ce11-task-def = { #task definition and service name -> #Change
