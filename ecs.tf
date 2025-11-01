@@ -52,7 +52,7 @@ module "ecs" {
       container_definitions = {
         luqman-ce11-container = { #container name -> Change
           essential = true
-          image     = "${data.aws_caller_identity.current.account_id}.dkr.ecr.us-east-1.amazonaws.com/${locals.prefix}-ecr:latest"
+          image     = "${data.aws_caller_identity.current.account_id}.dkr.ecr.us-east-1.amazonaws.com/luqman-ce11-ecr:latest"
           port_mappings = [
             {
               containerPort = 8080
